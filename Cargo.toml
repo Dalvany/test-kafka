@@ -1,0 +1,27 @@
+[package]
+name = "test-kafka"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[[bin]]
+name = "producer"
+path = "./src/producer.rs"
+
+[[bin]]
+name = "consumer"
+path = "./src/consumer.rs"
+
+[features]
+stats = []
+
+[dependencies]
+tokio = { version = "1", default-features = false, features = [
+    "macros",
+    "rt-multi-thread",
+    "time",
+] }
+rdkafka = { version = "0.36", features = ["cmake-build"] }
+log = "0.4"
+env_logger = "0.11"
